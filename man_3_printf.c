@@ -1,35 +1,36 @@
-.TH _PRINTF "1" "22 APRIL 2023" "0x11. C - printf"
-.SH NAME
+_PRINTF
+
+SH NAME
 _printf - print data according to a format
 .SH SYNOPSIS
-.B printf FORMAT [ARGUMENT]...
+.B printf FORMAT[ARGUMENT]...
 .SH DESCRIPTION
 Prints ARGUMENT(s) based on FORMAT
 
-Format specifiers (beginning with %), the additional arguments following format are formatted and inserted.
+Format specifiers(beginning with %), the additional arguments following format are formatted and inserted.
 
 _printf will also take an indefinite amount of arguments.
 
-Example:
+Example :
 _printf("%s", text);
 
-In the Example print the value of text with %s give the format of text.
+give the format of text.
 
 .B The conversion specifiers
 
-.IP %c
+.IP % c
 - prints character.
-.IP %s
+.IP % s
 - prints string.
-.IP %%
-- prints percentage symbol.
-.IP %d
+.IP % %
+-prints percentage symbol.
+.IP % d
 - prints decimal.
-.IP %i
+.IP % i
 - prints integer number.
 
 .SH SEE ALSO
-.I printf (3)
+.I printf(3)
 .SH AUTHOR
-Obasi Emmanuel ( Eobago )
-Lemaeke Ejimofor ( Lemaekeejimofor101 )
+Obasi Emmanuel(Eobago)
+Lemaeke Ejimofor(Lemaekeejimofor101)
