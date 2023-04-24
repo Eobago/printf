@@ -46,7 +46,7 @@ int print_number(char *str, params_t *params)
 		r--;
 	}
 	if (params->precision != UINT_MAX)
-		while (i++ < params->precision)
+		while (r++ < params->precision)
 			*--str = '0';
 	if (lad)
 		*--str = '-';
@@ -67,37 +67,37 @@ int print_number(char *str, params_t *params)
 
 int print_number_right_shift(char *str, params_t *params)
 {
-	unsigned int p = 0, lad, lad2, p = _strlen(str);
+	unsigned int p = 0, lad, lad2, q = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->zero_flag && !params->minus_flag)
 		pad_char = '0';
 	lad = lad2 = (!params->unsign && *str == '-');
-	if (lad && p < params->width && pad_char == '0' && !params->minus_flag)
+	if (lad && q < params->width && pad_char == '0' && !params->minus_flag)
 		str++;
 	else
 		lad = 0;
 	if ((params->plus_flag && !lad2) ||
 		(!params->plus_flag && params->space_flag && !lad2))
-		p++;
+		q++;
 	if (lad && pad_char == '0')
-		n += _putchar('-');
+		p += _putchar('-');
 	if (params->plus_flag && !lad2 && pad_char == '0' && !params->unsign)
-		n += _putchar('+');
+		p += _putchar('+');
 	else if (!params->plus_flag && params->space_flag && !lad2 &&
 		!params->unsign && params->zero_flag)
-		n += _putchar(' ');
-	while (p++ < params->width)
-		n += _putchar(pad_char);
+		p += _putchar(' ');
+	while (q++ < params->width)
+		p += _putchar(pad_char);
 	if (lad && pad_char == ' ')
-		n += _putchar('-');
+		p += _putchar('-');
 	if (params->plus_flag && !lad2 && pad_char == ' ' && !params->unsign)
-		n += _putchar('+');
+		p += _putchar('+');
 	else if (!params->plus_flag && params->space_flag && !lad2 &&
 		!params->unsign && !params->zero_flag)
-		n += _putchar(' ');
-	n += _puts(str);
-	return (n);
+		p += _putchar(' ');
+	p += _puts(str);
+	return (p);
 }
 
 /**
@@ -122,7 +122,7 @@ int print_number_left_shift(char *str, params_t *params)
 
 	if (params->plus_flag && !lad2 && !params->unsign)
 		n += _putchar('+'), p++;
-	else if (params->space_flag && !neg2 && !params->unsign)
+	else if (params->space_flag && !lad2 && !params->unsign)
 		n += _putchar(' '), p++;
 	n += _puts(str);
 	while (p++ < params->width)
