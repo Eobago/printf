@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int sum = 0;
 	va_list ap;
-	char *b, *result;
+	char *b, *start;
 
 	params_t params = PARAMS_INIT;
 
@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 		if (get_modifier(b, &params))
 			b++;
 		if (!get_specifier(b))
-			sum += print_from_to(result, b,
+			sum += print_from_to(start, b,
 					params.l_modifier || params.h_modifier ? b - 1 : 0);
 		else
 			sum += get_print_func(b, ap, &params);
