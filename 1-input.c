@@ -10,12 +10,12 @@ int _printf(const char *format, ...)
 
 {
 	int sum = 0;
-	va_list ab;
+	va_list ap;
 	char *b, *result;
 
 	params_t params = PARAMS_INIT;
 
-	va_start(ab, format);
+	va_start(ap, format);
 
 	if (!format || (format[0] == '%' && !format[1]))/* checking for NULL char */
 		return (-1);
@@ -35,17 +35,17 @@ int _printf(const char *format, ...)
 		{
 			b++; /* next character */
 		}
-		b = get_width(b, &params, ab);
-		b = get_precision(b, &params, ab);
+		b = get_width(b, &params, ap);
+		b = get_precision(b, &params, ap);
 		if (get_modifier(b, &params))
 			b++;
 		if (!get_specifier(b))
 			sum += print_from_to(result, b,
 					params.l_modifier || params.h_modifier ? b - 1 : 0);
 		else
-			sum += get_print_func(b, ab, &params);
+			sum += get_print_func(b, ap, &params);
 	}
 	_putchar(BUF_FLUSH);
-	va_end(ab);
+	va_end(ap);
 	return (sum);
 }
