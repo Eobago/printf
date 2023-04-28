@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _printf - prints and input into the standard output
- * @format: the format string
- * Return: number of bytes printed
+ * _printf - outputs and input into the stdout
+ * @format: the argument string
+ * Return: no of bytes printed
  */
 
 int _printf(const char *format, ...)
@@ -11,39 +11,39 @@ int _printf(const char *format, ...)
 {
 	int sum = 0;
 	va_list ap;
-	char *b, *start;
+	char *p, *start;
 
 	params_t params = PARAMS_INIT;
 
 	va_start(ap, format);
 
-	if (!format || (format[0] == '%' && !format[1]))/* checking for NULL char */
+	if (!format || (format[0] == '%' && !format[1]))/* checking for the /0 char */
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	for (b = (char *)format; *b; b++)
+	for (p = (char *)format; *p; p++)
 	{
 		init_params(&params, ap);
-		if (*b != '%')/*checking for the % specifier*/
+		if (*p != '%')/*checking for the percentage specifier*/
 		{
-			sum += _putchar(*b);
+			sum += _putchar(*p);
 			continue;
 		}
-		result = b;
-		b++;
-		while (get_flag(b, &params)) /* while char at b is flag character */
+		result = p;
+		p++;
+		while (get_flag(p, &params)) /* while char at p is a flag character */
 		{
-			b++; /* next character */
+			p++; /* move to the next character */
 		}
-		b = get_width(b, &params, ap);
-		b = get_precision(b, &params, ap);
-		if (get_modifier(b, &params))
-			b++;
-		if (!get_specifier(b))
-			sum += print_from_to(start, b,
-					params.l_modifier || params.h_modifier ? b - 1 : 0);
+		p = get_width(p, &params, ap);
+		p = get_precision(p, &params, ap);
+		if (get_modifier(p, &params))
+			p++;
+		if (!get_specifier(p))
+			sum += print_from_to(start, p,
+					params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
-			sum += get_print_func(b, ap, &params);
+			sum += get_print_func(p, ap, &params);
 	}
 	_putchar(BUF_FLUSH);
 	va_end(ap);
