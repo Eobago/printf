@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			sum += _putchar(*p);
 			continue;
 		}
-		result = p;
+		start = p;
 		p++;
 		while (get_flag(p, &params)) /* while char at p is a flag character */
 		{
