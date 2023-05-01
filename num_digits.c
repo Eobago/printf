@@ -122,7 +122,7 @@ int print_number_left_shift(char *str, params_t *params)
 	if (params->plus_flag && !neg2 && !params->unsign)
 		n += _putchar('+'), p++;
 	else if (params->space_flag && !neg2 && !params->unsign)
-		n += _putchar(' '), i++;
+		n += _putchar(' '), p++;
 	n += _puts(str);
 	while (p++ < params->width)
 		n += _putchar(pad_char);
