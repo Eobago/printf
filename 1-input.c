@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	for (q = (char *)format; *q; p++)
+	for (q = (char *)format; *q; q++)
 	{
 		init_params(&params, ap);
 		if (*q != '%')/*checking for the % specifier*/
