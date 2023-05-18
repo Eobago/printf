@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * print_from_to - prints a range of char addresses
- * @start: starting address
- * @stop: stopping address
- * @except: except address
+ * print_from_to - prints a range of char via their addresses.
+ * @start: address to begin with.
+ * @stop: address to stop at.
+ * @except: excluse the address.
  *
- * Return: number bytes printed
+ * Return: number bytes that was printed
  */
 int print_from_to(char *start, char *stop, char *except)
 {
@@ -22,11 +22,11 @@ int print_from_to(char *start, char *stop, char *except)
 }
 
 /**
- * print_rev - prints string in reverse
- * @ap: string
- * @params: the parameters struct
+ * print_rev - prints string in reverse order
+ * @ap: string to be printed
+ * @params: the parameters struct of the string
  *
- * Return: number bytes printed
+ * Return: number bytes that was printed
  */
 int print_rev(va_list ap, params_t *params)
 {
@@ -46,11 +46,11 @@ int print_rev(va_list ap, params_t *params)
 }
 
 /**
- * print_rot13 - prints string in rot13
- * @ap: string
- * @params: the parameters struct
+ * print_rot13 - prints string in rot13 format
+ * @ap: string to be printed
+ * @params: the parameters struct of the string
  *
- * Return: number bytes printed
+ * Return: number bytes that was printed
  */
 int print_rot13(va_list ap, params_t *params)
 {
